@@ -1,0 +1,267 @@
+defaults:
+- mary: marie
+  james: jean
+  robert: robert
+  user: <USERNAME>
+users:
+- username: john
+  position: Administrateur
+  firstname: John
+  lastname: Martin
+  email: john@acme.com
+  isAdmin: true
+  avatar: eXo-Face-John.png
+- username: jean
+  position: Commercial
+  firstname: Jean
+  lastname: Metayet
+  email: jean@acme.com
+  avatar: eXo-Face-James.png
+- username: marie
+  position: Responsable RH
+  firstname: Marie
+  lastname: Coubertin
+  email: marie@acme.com
+  avatar: eXo-Face-Mary.png
+- username: jack
+  position: Developeur
+  firstname: Jack
+  lastname: Marker
+  email: jack@acme.com
+  avatar: eXo-Face-Jack.png
+- username: robert
+  position: PDG
+  firstname: Robert
+  lastname: Hennessy
+  email: robert@acme.com
+  avatar: eXo-Face-Robert.png
+- username: <USERNAME>
+  position: Chef de projet
+  firstname: <FIRSTNAME>
+  lastname: <LASTNAME>
+  email: <USERNAME>@acme.com
+  avatar: eXo-Face-Benjamin.png
+
+relations:
+- inviting: <USERNAME>
+  invited: john
+- inviting: <USERNAME>
+  invited: marie
+- inviting: <USERNAME>
+  invited: robert
+  confirm: false
+- inviting: jack
+  invited: <USERNAME>
+  confirm: false
+- inviting: jean
+  invited: john
+- inviting: jean
+  invited: marie
+- inviting: john
+  invited: marie
+- inviting: john
+  invited: robert
+- inviting: marie
+  invited: robert
+
+spaces:
+- displayName: Discussions Générales
+  prettyName: public_discussions
+  creator: john
+  avatar: eXo-Space-Public-color.png
+  members:
+    - <USERNAME>
+    - marie
+    - jean
+    - robert
+- displayName: Projet Intranet Social
+  prettyName: social_intranet
+  creator: <USERNAME>
+  avatar: eXo-Space-Social-color.png
+  members:
+    - john
+    - jean
+- displayName: Equipe Commerciale
+  prettyName: sales
+  creator: <USERNAME>
+  avatar: eXo-Space-Sales-color.png
+  members:
+    - jean
+    - robert
+- displayName: Département Marketing
+  prettyName: marketing_analytics
+  creator: <USERNAME>
+  avatar: eXo-Space-Marketing-color.png
+  members:
+    - robert
+    - marie
+- displayName: Département RH
+  prettyName: human_resources
+  creator: marie
+  avatar: eXo-Space-RH-color.png
+  members:
+    - robert
+    - <USERNAME>
+- displayName: Demande à ton collègue
+  prettyName: ask_a_colleague
+  creator: john
+  avatar: eXo-Space-Intranet-color.png
+  members:
+    - robert
+    - marie
+    - jean
+    - <USERNAME>
+
+calendars:
+- user: john
+  calendars:
+  - name: John Smith
+    color: powder_blue
+    type: user
+    events:
+      - title: Réunion CP
+        day: monday
+        start: 10:00
+        end: 12:00
+- user: <USERNAME>
+  calendars:
+  - name: <FULLNAME>
+    color: powder_blue
+    type: user
+    events:
+      - title: Revue de spec
+        day: monday
+        start: 17:00
+        end: 19:00
+      - title: Réunion d'équipe
+        day: tuesday
+        start: 14:00
+        end: 18:00
+      - title: Réunion EOW
+        day: friday
+        start: 13:00
+        end: 15:00
+  - name: Discussions Générales
+    color: orange
+    events:
+      - title: Migriation de l'Intranet
+        day: wednesday
+        start: 10:00
+        end: 14:00
+      - title: Diner du mois
+        day: thursday
+        start: 17:30
+        end: 20:00
+  - name: Equipe Commerciale
+    color: moss_green
+    events:
+      - title: Revue de Pipe
+        day: monday
+        start: 10:00
+        end: 11:30
+      - title: Démo équipe produit
+        day: wednesday
+        start: 15:00
+        end: 16:00
+      - title: Webinaire ventes
+        day: thursday
+        start: 11:00
+        end: 12:00
+  - name: Projet Intranet Social
+    color: light_purple
+    events:
+      - title: Démo Intranet
+        day: thursday
+        start: 13:00
+        end: 17:00
+      - title: Session Q&R
+        day: friday
+        start: 16:00
+        end: 17:00
+  - name: Département RH
+    color: gray
+    events:
+      - title: Réunion hebdo
+        day: friday
+        start: 10:00
+        end: 11:30
+  - name: Département Marketing
+    color: pink
+    events:
+      - title: Lead Gen Study
+        day: tuesday
+        start: 9:30
+        end: 12:30
+      - title: Mise à jour Analytics
+        day: wednesday
+        start: 17:00
+        end: 19:00
+
+wikis:
+  - title: Wiki Home
+    type: portal
+    owner: intranet
+    filename: wiki-home.txt
+  - title: Spec Flux d'activité
+    filename: activity-stream-engagement.txt
+    parent: Wiki Home
+    new: true
+  - title: Guide comment faire
+    filename: how-to-guide.txt
+    parent: Wiki Home
+    new: true
+  - title: Gestion des absences
+    filename: leave-planning.txt
+    parent: Wiki Home
+    new: true
+  - title: Notes de réunions
+    parent: Wiki Home
+    wikis:
+      - title: 0107 Company Meeting
+      - title: 0114 Company Meeting
+        wikis:
+          - title: Attachments
+  - title: Partage de connaissances
+    parent: Wiki Home
+    wikis:
+      - title: Vous êtes nouveau
+      - title: Organisation de l'intranet
+  - title: Solution du marché
+    type: group
+    owner: spaces/social_intranet
+    parent: Wiki Home
+  - title: Nouvel employé
+    type: group
+    owner: spaces/social_intranet
+    parent: Wiki Home
+  - title: Proposition graphiques
+    type: group
+    owner: spaces/social_intranet
+    parent: Wiki Home
+
+activities:
+  - from: <USERNAME>
+    body: Je suis avec @marie à Paris
+    likes:
+      - john
+      - jean
+    comments:
+      - from: marie
+        body: Très bon café, beau soleil
+  - from: john
+    body: N'oubliez pas le webinaire de la semaine prochaine
+    likes:
+      - <USERNAME>
+      - john
+      - marie
+      - robert
+    comments:
+      - from: <USERNAME>
+        body: en salle F40?
+      - from: john
+        body: oui et également en ligne
+      - from: marie
+        body: au fait @john , rappelle-moi d'envoyer une invit
+      - from: john
+        body: bien sur @marie
+

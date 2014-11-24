@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2003-2010 eXo Platform SAS.
+
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Affero General Public License
+    as published by the Free Software Foundation; either version 3
+    of the License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, see<http://www.gnu.org/licenses/>.
+
+-->
+<configuration
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd http://www.exoplatform.org/xml/ns/kernel_1_2.xsd"
+        xmlns="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd">
+
+    <external-component-plugins>
+        <target-component>org.exoplatform.social.core.space.spi.SpaceService</target-component>
+        <component-plugin>
+            <name>CustomDemoHomePage</name>
+            <set-method>addSpaceListener</set-method>
+            <type>org.exoplatform.addons.spaces.services.customization.listener.CustomizeSpaceHomePageListener</type>
+        </component-plugin>
+    </external-component-plugins>
+
+    <external-component-plugins>
+        <target-component>org.exoplatform.application.registry.ApplicationRegistryService</target-component>
+        <component-plugin>
+            <name>MyCRM application registration</name>
+            <set-method>initListener</set-method>
+            <type>org.exoplatform.application.registry.ApplicationCategoriesPlugins</type>
+            <init-params>
+                <object-param>
+                    <name>external</name>
+                    <description>description</description>
+                    <object type="org.exoplatform.application.registry.ApplicationCategory">
+                        <field name="name"><string>External</string></field>
+                        <field name="displayName"><string>External</string></field>
+                        <field name="description"><string>External Applications</string></field>
+                        <field name="accessPermissions">
+                            <collection type="java.util.ArrayList" item-type="java.lang.String">
+                                <value><string>*:/platform/users</string></value>
+                            </collection>
+                        </field>
+                        <field name="applications">
+                            <collection type="java.util.ArrayList">
+                                <value>
+                                    <object type="org.exoplatform.application.registry.Application">
+                                        <field name="applicationName"><string>MyCrmApplication</string></field>
+                                        <field name="categoryName"><string>external</string></field>
+                                        <field name="displayName"><string>Acme CRM</string></field>
+                                        <field name="description"><string>Acme CRM</string></field>
+                                        <field name="type"><string>portlet</string></field>
+                                        <field name="contentId"><string>portlet-pack/MyCrmApplication</string></field>
+                                        <field name="accessPermissions">
+                                            <collection type="java.util.ArrayList" item-type="java.lang.String">
+                                                <value><string>*:/platform/users</string></value>
+                                            </collection>
+                                        </field>
+                                    </object>
+                                </value>
+                            </collection>
+                        </field>
+                    </object>
+                </object-param>
+            </init-params>
+        </component-plugin>
+    </external-component-plugins>
+
+</configuration>
